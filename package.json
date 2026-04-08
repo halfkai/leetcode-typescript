@@ -1,0 +1,22 @@
+{
+  "name": "leetcode-typescript",
+  "version": "1.0.0",
+  "description": "LeetCode solutions in TypeScript, published via GitHub Pages",
+  "scripts": {
+    "build": "bun run scripts/build.ts",
+    "dev": "bun run scripts/dev.ts",
+    "new": "bun run scripts/new-problem.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.11",
+    "chokidar": "^3.6.0",
+    "highlight.js": "^11.9.0",
+    "marked": "^12.0.0"
+  },
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
