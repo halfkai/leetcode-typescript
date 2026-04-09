@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1. Two Sum - LeetCode TypeScript Solutions</title>
+  <meta name="description" content="> Original: [1. Two Sum](https://leetcode.com/problems/two-sum/) Given an array of integers `nums` and an integer `targe">
+  <link rel="stylesheet" href="/leetcode-typescript/css/style.css">
+  <link rel="stylesheet" href="/leetcode-typescript/css/highlight.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="/leetcode-typescript/" class="logo">LeetCode TypeScript</a>
+      <span class="nav-hint">Solutions</span>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <article class="problem-article">
+      <div class="problem-header">
+        <div class="problem-meta-row">
+          <span class="problem-number">#1</span>
+          <span class="difficulty easy">Easy</span>
+          <span class="tag">Array</span><span class="tag">Hash Table</span>
+        </div>
+        <h1 class="problem-title">Two Sum</h1>
+        <a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener" class="leetcode-link">
+          View on LeetCode →
+        </a>
+      </div>
+
+      <div class="problem-body">
+        <h2>Problem</h2>
+<blockquote>
+<p>Original: <a href="https://leetcode.com/problems/two-sum/">1. Two Sum</a></p>
+</blockquote>
+<p>Given an array of integers <code>nums</code> and an integer <code>target</code>, return <em>indices of the two numbers such that they add up to <code>target</code></em>.</p>
+<p>You may assume that each input would have <strong><em>exactly</em> one solution</strong>, and you may not use the <em>same</em> element twice.</p>
+<p>You can return the answer in any order.</p>
+<p><strong>Example 1:</strong></p>
+<p><strong>Input:</strong> nums = [2,7,11,15], target = 9
+<strong>Output:</strong> [0,1]
+<strong>Explanation:</strong> Because nums[0] + nums[1] == 9, we return [0, 1].</p>
+<p><strong>Example 2:</strong></p>
+<p><strong>Input:</strong> nums = [3,2,4], target = 6
+<strong>Output:</strong> [1,2]</p>
+<p><strong>Example 3:</strong></p>
+<p><strong>Input:</strong> nums = [3,3], target = 6
+<strong>Output:</strong> [0,1]</p>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><p><code>2 &lt;= nums.length &lt;= 10^4</code></p>
+</li>
+<li><p><code>-10^9 &lt;= nums[i] &lt;= 10^9</code></p>
+</li>
+<li><p><code>-10^9 &lt;= target &lt;= 10^9</code></p>
+</li>
+<li><p><strong>Only one valid answer exists.</strong></p>
+</li>
+</ul>
+<p>**Follow-up: **Can you come up with an algorithm that is less than <code>O(n^2)</code> time complexity?</p>
+<h2>Approach</h2>
+<!-- Explain the key insight and algorithm here -->
+
+<p>Setting a Map&lt;target - nums[i], i&gt; while iterating the array</p>
+<h2>Solution</h2>
+<h3>Code</h3>
+<blockquote>
+<p><a href="./solution.ts">solution.ts</a></p>
+</blockquote>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">twoSum</span>(<span class="hljs-params"><span class="hljs-attr">nums</span>: <span class="hljs-built_in">number</span>[], <span class="hljs-attr">target</span>: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span>[] {
+  <span class="hljs-keyword">const</span> map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>&lt;<span class="hljs-built_in">number</span>, <span class="hljs-built_in">number</span>&gt;();
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-property">length</span>; i++) {
+    <span class="hljs-keyword">const</span> complement = target - nums[i]!;
+    <span class="hljs-keyword">if</span> (map.<span class="hljs-title function_">has</span>(complement)) <span class="hljs-keyword">return</span> [map.<span class="hljs-title function_">get</span>(complement)!, i];
+    map.<span class="hljs-title function_">set</span>(nums[i]!, i);
+  }
+  <span class="hljs-keyword">return</span> [];
+}</code></pre><h3>Complexity</h3>
+<p>n = nums.length</p>
+<ul>
+<li><strong>Time</strong>: O(n)</li>
+<li><strong>Space</strong>: O(n)</li>
+</ul>
+
+      </div>
+    </article>
+
+    <aside class="problem-list-sidebar">
+      <h2>All Solutions</h2>
+      <ul class="sidebar-list">
+        <li class="active">
+            <a href="/leetcode-typescript/problems/two-sum/">
+              <span class="list-num">1.</span>
+              <span class="list-title">Two Sum</span>
+              <span class="list-diff easy">Easy</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/add-two-numbers/">
+              <span class="list-num">2.</span>
+              <span class="list-title">Add Two Numbers</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/longest-substring-without-repeating-characters/">
+              <span class="list-num">3.</span>
+              <span class="list-title">Longest Substring Without Repeating Characters</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/median-of-two-sorted-arrays/">
+              <span class="list-num">4.</span>
+              <span class="list-title">Median of Two Sorted Arrays</span>
+              <span class="list-diff hard">Hard</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/longest-palindromic-substring/">
+              <span class="list-num">5.</span>
+              <span class="list-title">Longest Palindromic Substring</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/zigzag-conversion/">
+              <span class="list-num">6.</span>
+              <span class="list-title">Zigzag Conversion</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/reverse-integer/">
+              <span class="list-num">7.</span>
+              <span class="list-title">Reverse Integer</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/string-to-integer-atoi/">
+              <span class="list-num">8.</span>
+              <span class="list-title">String to Integer (atoi)</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/palindrome-number/">
+              <span class="list-num">9.</span>
+              <span class="list-title">Palindrome Number</span>
+              <span class="list-diff easy">Easy</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/regular-expression-matching/">
+              <span class="list-num">10.</span>
+              <span class="list-title">Regular Expression Matching</span>
+              <span class="list-diff hard">Hard</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/container-with-most-water/">
+              <span class="list-num">11.</span>
+              <span class="list-title">Container With Most Water</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/integer-to-roman/">
+              <span class="list-num">12.</span>
+              <span class="list-title">Integer to Roman</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/roman-to-integer/">
+              <span class="list-num">13.</span>
+              <span class="list-title">Roman to Integer</span>
+              <span class="list-diff easy">Easy</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/longest-common-prefix/">
+              <span class="list-num">14.</span>
+              <span class="list-title">Longest Common Prefix</span>
+              <span class="list-diff easy">Easy</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/3sum/">
+              <span class="list-num">15.</span>
+              <span class="list-title">3Sum</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/3sum-closest/">
+              <span class="list-num">16.</span>
+              <span class="list-title">3Sum Closest</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/letter-combinations-of-a-phone-number/">
+              <span class="list-num">17.</span>
+              <span class="list-title">Letter Combinations of a Phone Number</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/4sum/">
+              <span class="list-num">18.</span>
+              <span class="list-title">4Sum</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/remove-nth-node-from-end-of-list/">
+              <span class="list-num">19.</span>
+              <span class="list-title">Remove Nth Node From End of List</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/valid-parentheses/">
+              <span class="list-num">20.</span>
+              <span class="list-title">Valid Parentheses</span>
+              <span class="list-diff easy">Easy</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/merge-two-sorted-lists/">
+              <span class="list-num">21.</span>
+              <span class="list-title">Merge Two Sorted Lists</span>
+              <span class="list-diff easy">Easy</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/generate-parentheses/">
+              <span class="list-num">22.</span>
+              <span class="list-title">Generate Parentheses</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/merge-k-sorted-lists/">
+              <span class="list-num">23.</span>
+              <span class="list-title">Merge k Sorted Lists</span>
+              <span class="list-diff hard">Hard</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/swap-nodes-in-pairs/">
+              <span class="list-num">24.</span>
+              <span class="list-title">Swap Nodes in Pairs</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/reverse-nodes-in-k-group/">
+              <span class="list-num">25.</span>
+              <span class="list-title">Reverse Nodes in k-Group</span>
+              <span class="list-diff hard">Hard</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/remove-duplicates-from-sorted-array/">
+              <span class="list-num">26.</span>
+              <span class="list-title">Remove Duplicates from Sorted Array</span>
+              <span class="list-diff easy">Easy</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/remove-element/">
+              <span class="list-num">27.</span>
+              <span class="list-title">Remove Element</span>
+              <span class="list-diff easy">Easy</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/find-the-index-of-the-first-occurrence-in-a-string/">
+              <span class="list-num">28.</span>
+              <span class="list-title">Find the Index of the First Occurrence in a String</span>
+              <span class="list-diff easy">Easy</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/divide-two-integers/">
+              <span class="list-num">29.</span>
+              <span class="list-title">Divide Two Integers</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/substring-with-concatenation-of-all-words/">
+              <span class="list-num">30.</span>
+              <span class="list-title">Substring with Concatenation of All Words</span>
+              <span class="list-diff hard">Hard</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/next-permutation/">
+              <span class="list-num">31.</span>
+              <span class="list-title">Next Permutation</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/longest-valid-parentheses/">
+              <span class="list-num">32.</span>
+              <span class="list-title">Longest Valid Parentheses</span>
+              <span class="list-diff hard">Hard</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/search-in-rotated-sorted-array/">
+              <span class="list-num">33.</span>
+              <span class="list-title">Search in Rotated Sorted Array</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/find-first-and-last-position-of-element-in-sorted-array/">
+              <span class="list-num">34.</span>
+              <span class="list-title">Find First and Last Position of Element in Sorted Array</span>
+              <span class="list-diff medium">Medium</span>
+            </a>
+          </li>
+        <li class="">
+            <a href="/leetcode-typescript/problems/search-insert-position/">
+              <span class="list-num">35.</span>
+              <span class="list-title">Search Insert Position</span>
+              <span class="list-diff easy">Easy</span>
+            </a>
+          </li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <p>TypeScript solutions · Hosted on GitHub Pages · <a href="https://github.com" target="_blank">View source</a></p>
+  </footer>
+</body>
+</html>
