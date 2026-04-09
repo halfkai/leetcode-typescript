@@ -207,7 +207,8 @@ async function fetchProblem(slug: string): Promise<LCQuestion> {
 function buildTestFromQuestion(q: LCQuestion): string | null {
   try {
     const meta = JSON.parse(q.metaData) as LCMetaData;
-    if (!meta.name || !meta.params?.length || !q.exampleTestcaseList?.length) return null;
+    if (!meta.name || !meta.params?.length || !q.exampleTestcaseList?.length)
+      return null;
     return buildTestFile(meta.name, meta, q.exampleTestcaseList);
   } catch {
     return null;
@@ -272,8 +273,10 @@ interface LCMetaData {
 
 /** Map LeetCode type strings to TypeScript types. */
 function lcTypeToTs(t: string): string {
-  if (t === "integer" || t === "long" || t === "double" || t === "float") return "number";
-  if (t === "integer[]" || t === "long[]" || t === "double[]") return "number[]";
+  if (t === "integer" || t === "long" || t === "double" || t === "float")
+    return "number";
+  if (t === "integer[]" || t === "long[]" || t === "double[]")
+    return "number[]";
   if (t === "integer[][]" || t === "long[][]") return "number[][]";
   if (t === "string") return "string";
   if (t === "string[]") return "string[]";
@@ -302,9 +305,11 @@ function buildTestFile(
     const args = lines.map((line, i) => {
       const tsType = paramTypes[i];
       // Arrays and nested arrays are already JSON-compatible in LeetCode format
-      if (tsType?.includes("[]") || line.trim().startsWith("[")) return line.trim();
+      if (tsType?.includes("[]") || line.trim().startsWith("["))
+        return line.trim();
       // Strings that aren't quoted
-      if (tsType === "string" && !line.trim().startsWith('"')) return JSON.stringify(line.trim());
+      if (tsType === "string" && !line.trim().startsWith('"'))
+        return JSON.stringify(line.trim());
       return line.trim();
     });
     return { idx: idx + 1, args };
@@ -362,14 +367,25 @@ async function createProblem(
     process.exit(1);
   }
 
-  const md = buildMarkdown(id, title, slug, difficulty, tags, url, bodyMd, codeSnippet);
+  const md = buildMarkdown(
+    id,
+    title,
+    slug,
+    difficulty,
+    tags,
+    url,
+    bodyMd,
+    codeSnippet,
+  );
 
   await mkdir(dir, { recursive: true });
   await writeFile(`${dir}/index.md`, md, "utf-8");
   // Prefix top-level function declarations with `export` so test.ts can import them
-  const solutionContent = codeSnippet.replace(/^(function\s)/m, "export $1") + "\n";
+  const solutionContent =
+    codeSnippet.replace(/^(function\s)/m, "export $1") + "\n";
   await writeFile(`${dir}/solution.ts`, solutionContent, "utf-8");
-  if (testContent) await writeFile(`${dir}/solution.test.ts`, testContent, "utf-8");
+  if (testContent)
+    await writeFile(`${dir}/solution.test.ts`, testContent, "utf-8");
 
   console.log(`✓ Created: ${dir}/index.md`);
   console.log(`✓ Created: ${dir}/solution.ts`);
@@ -423,7 +439,17 @@ if (args[0]!.startsWith("http")) {
   const codeSnippet = extractTsSnippet(q.codeSnippets);
   const testContent = buildTestFromQuestion(q);
 
-  await createProblem(id, q.title, q.titleSlug, q.difficulty, tags, canonicalUrl, bodyMd, codeSnippet, testContent);
+  await createProblem(
+    id,
+    q.title,
+    q.titleSlug,
+    q.difficulty,
+    tags,
+    canonicalUrl,
+    bodyMd,
+    codeSnippet,
+    testContent,
+  );
 } else {
   // Manual mode: bun run new <id> <slug> <title> <difficulty> [tags...]
   const [idStr, slug, title, difficulty, ...tags] = args;
@@ -453,5 +479,15 @@ if (args[0]!.startsWith("http")) {
     console.warn("Continuing with empty template.");
   }
 
-  await createProblem(id, title, slug, difficulty, tags, url, bodyMd, codeSnippet, testContent);
+  await createProblem(
+    id,
+    title,
+    slug,
+    difficulty,
+    tags,
+    url,
+    bodyMd,
+    codeSnippet,
+    testContent,
+  );
 }
