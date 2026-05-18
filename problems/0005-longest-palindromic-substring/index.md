@@ -11,9 +11,7 @@ url: https://leetcode.com/problems/longest-palindromic-substring/
 
 > Original: [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
 
-Given a string `s`, return *the longest* *palindromic* *substring* in `s`.
-
- 
+Given a string `s`, return _the longest_ _palindromic_ _substring_ in `s`.
 
 **Example 1:**
 
@@ -26,8 +24,6 @@ Given a string `s`, return *the longest* *palindromic* *substring* in `s`.
 **Input:** s = "cbbd"
 **Output:** "bb"
 
- 
-
 **Constraints:**
 
 - `1 <= s.length <= 1000`
@@ -37,6 +33,9 @@ Given a string `s`, return *the longest* *palindromic* *substring* in `s`.
 ## Approach
 
 <!-- Explain the key insight and algorithm here -->
+
+Solution 1: Iterate through every element, and try to expand the substring.
+Solutino 2:
 
 ## Solution
 

@@ -7,12 +7,12 @@ describe("longestPalindrome", () => {
   test("example 1", () => {
     const result = longestPalindrome("babad");
     // TODO: replace with expected output
-    expect(result).toEqual(result satisfies string);
+    expect(result).toBeOneOf(["bab", "aba"]);
   });
 
   test("example 2", () => {
     const result = longestPalindrome("cbbd");
     // TODO: replace with expected output
-    expect(result).toEqual(result satisfies string);
+    expect(result).toEqual("bb");
   });
 });

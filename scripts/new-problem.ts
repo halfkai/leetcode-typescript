@@ -326,7 +326,7 @@ function buildTestFile(
     const result = ${fnName}(${argsStr});
     // TODO: replace with expected output
     expect(result).toEqual(result satisfies ${returnType});
-  });`;
+  })`;
     })
     .join("\n\n");
 

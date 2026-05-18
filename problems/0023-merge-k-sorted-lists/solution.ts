@@ -12,4 +12,4 @@
 
 export function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
     
-};
+}
